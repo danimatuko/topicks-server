@@ -8,11 +8,19 @@ import dotenv from 'dotenv';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 dotenv.config();
 import path from 'path';
+import cors from 'cors';
 
 const app = express();
+
 const PORT = process.env.PORT || 5000;
 
 connectToDB();
+
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 app.use(express.json());
 //routes
